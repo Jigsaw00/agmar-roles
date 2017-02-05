@@ -1,0 +1,14 @@
+add to App\Http\Kernel.php 'role'=>\Agmar\Role\Middleware\RoleMiddleware::class,
+
+register the provider 
+    Agmar\Role\AgmarRoleServiceProvider::class,
+
+add hasPermissionsTrait to User model...
+    use Agmar\Role\Permissions\hasPermissionsTrait;
+...and use it inside the user model
+class User extends Authenticatable
+{
+    use hasPermissionsTrait;
+}
+
+finally run the migrations

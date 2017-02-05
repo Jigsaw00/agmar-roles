@@ -1,0 +1,24 @@
+{
+    "name": "agmar/role",
+    "description": "Role-Permision package based on codecourse tutorial",
+    "authors": [
+        {
+            "name": "Marcin Gierus",
+            "email": "martingierus@gmail.com"
+        }
+    ],
+
+    "autoload":{
+        "psr-4": {
+            "Agmar\\Role\\": "scr"
+        }
+    },
+
+    "require": {
+
+        "php": ">=5.5.0",
+        "illuminate/database": ">= 5.0",
+        "illuminate/support": ">= 5.0",
+        "barryvdh/laravel-debugbar": "^2.3"
+    }
+}
