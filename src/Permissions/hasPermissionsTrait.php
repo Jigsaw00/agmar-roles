@@ -2,7 +2,8 @@
 
 namespace Agmar\Role\Permissions;
 
-use Agmar\Role\Models\{Role , Permission};
+use Agmar\Role\Models\Role;
+use Agmar\Role\Models\Permission;
 
 trait hasPermissionsTrait {
 
@@ -17,7 +18,7 @@ trait hasPermissionsTrait {
      * @param  array $roles
      * @return boolean        
      */
-    public function hasRole(... $roles){
+    public function hasRole($roles){
 
        foreach ($roles as $role) {
            if ($this->roles->contains('name',strtolower($role))) {
@@ -33,7 +34,7 @@ trait hasPermissionsTrait {
      * @param  array $roles 
      * @return this
      */
-    public function giveRole(...$roles){
+    public function giveRole($roles){
         $roles = $this->getAllRoles(array_flatten($roles));
 
         if($roles === null){
@@ -50,7 +51,7 @@ trait hasPermissionsTrait {
      * @param  array $roles 
      * @return $this
      */
-    public function updateRoles(...$roles){
+    public function updateRoles($roles){
         $this->roles()->detach();
 
         return $this->giveRole($roles);
@@ -61,7 +62,7 @@ trait hasPermissionsTrait {
      * @param  array $roles 
      * @return $this
      */
-    public function withdrawRoles(...$roles){
+    public function withdrawRoles($roles){
         $roles = $this->getAllRoles(array_flatten($roles));
 
         $this->roles()->detach($roles);
@@ -74,7 +75,7 @@ trait hasPermissionsTrait {
      * @param  array  $roles
      * @return Illuminate\Database\Eloquent\Model
      */
-    protected function getAllRoles(array $roles){
+    protected function getAllRoles($roles){
         return Role::whereIn('name',$role)->get();
     }
     
@@ -88,7 +89,7 @@ trait hasPermissionsTrait {
      * @param  array  $permissions
      * @return Illuminate\Database\Eloquent\Model
      */
-    protected function getAllPermissions(array $permissions){
+    protected function getAllPermissions($permissions){
         return Permission::whereIn('name',$permissions)->get();
     }
 
@@ -97,7 +98,7 @@ trait hasPermissionsTrait {
      * @param  array $permissions
      * @return $this
      */
-    public function updatePermissions(...$permissions){
+    public function updatePermissions($permissions){
         $this->permissions()->detach();
 
         return $this->givePermissionTo($permissions);
@@ -108,7 +109,7 @@ trait hasPermissionsTrait {
      * @param  array $permissions
      * @return $this
      */
-    public function givePermissionTo(...$permissions){
+    public function givePermissionTo($permissions){
 
         $permissions = $this->getAllPermissions(array_flatten($permissions)); 
 
@@ -127,7 +128,7 @@ trait hasPermissionsTrait {
      * @param  array $permissions
      * @return $this
      */
-    public function withdrawPermissionTo(...$permissions){
+    public function withdrawPermissionTo($permissions){
         $permissions = $this->getAllPermissions(array_flatten($permissions));
 
         $this->permissions()->detach($permissions);
