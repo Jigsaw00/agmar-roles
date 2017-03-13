@@ -76,7 +76,7 @@ trait hasPermissionsTrait {
      * @return Illuminate\Database\Eloquent\Model
      */
     protected function getAllRoles($roles){
-        return Role::whereIn('name',$role)->get();
+        return Role::whereIn('name',$roles)->get();
     }
     
     /*
