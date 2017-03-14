@@ -20,7 +20,7 @@ trait hasPermissionsTrait {
      */
     public function hasRole($roles){
 
-       foreach ($roles as $role) {
+       foreach ((array)$roles as $role) {
            if ($this->roles->contains('name',strtolower($role))) {
                return true;
            }
