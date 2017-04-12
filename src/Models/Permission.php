@@ -6,8 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Permission extends Model
 {
+    
+    protected $fillable = [
+       'name',
+       'created_at',
+       'updated_at'
+    ];
+
     /**
-     * Set up Relation
+     * Set up relation
      * @return Illuminate\Database\Eloquent\Model;
      */
     public function roles(){
